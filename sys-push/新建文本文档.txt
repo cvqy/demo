@@ -1,0 +1,9 @@
+模拟数据更新地址：http://localhost:8099/updata.html
+
+模拟页面静态刷新地址：http://localhost:8099/index.html
+
+CREATE TABLE push (
+	id int auto_increment PRIMARY KEY,
+    name varchar(255),
+    title varchar(255)
+    );

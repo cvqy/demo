@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input id="name" value="" placeholder="用户名">
+<input id="title" value="" placeholder="标题">
+<button onclick="sub()">提交</button>
+<script src="aja.min.js"></script>
+<script type="text/javascript">
+
+		let sub = () => {
+				let name = document.getElementById("name").value;
+				let title = document.getElementById("title").value;
+				let _json={
+					id:1,
+					name:name,
+					title:title
+				}
+				console.log(_json)
+				aja().url("/update/title")
+					.sync(true)
+					.type("json") //['html', 'json', 'jsonp', 'script', 'style']
+					.timeout(2000)
+					.method("post")
+					.data(_json)
+					.header('Content-Type', 'application/json')
+					//.header("Access-Control-Allow-Origin","http://127.0.0.1:8848")//
+					.on('success', (res) => {
+						console.log(res)
+						let imgHtml = ``;
+
+					})
+					.on("error", (err) => {
+						console.error("(꒪Д꒪)ノ解析结果的时候出现了严重的问题，错误信息如下\n", err)
+					})
+					.on("404", (err) => {
+						console.error(" ﾉ)ﾟДﾟ( ", "呀,接口神秘消失了\n", err)
+					})
+					.on("500", (err) => {
+						console.error("!!!∑(ﾟДﾟノ)ノ",   "，异常信息如下\n", err)
+					})
+					.go();
+
+			}
+</script>
+</body>
+</html>

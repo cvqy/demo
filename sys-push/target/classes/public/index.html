@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	 
+	<h1 id="title">吾家有女初长成,力拔山兮气盖世</h1> 
+	<script type="text/javascript"> 
+			function EES() {
+				let source = null;
+				this.start = (url) => {
+					if (window.EventSource) {
+						// 创建 EventSource 对象连接服务器
+						source = new EventSource(url);
+						// 连接成功窒触发open事件
+						source.addEventListener('open', () => { 
+						}); 
+						//TODO 实现自己的业务逻辑
+						source.addEventListener('message', e => {
+							console.log("message", JSON.parse(e.data));
+							if(JSON.parse(e.data).msg != null){
+								 document.getElementById("title").innerHTML = e.data ; 
+							}
+							
+						});
+						
+						// 连接异常时会触发 error 事件并自动重连
+						source.addEventListener('error', e => {
+							if (e.target.readyState === EventSource.CLOSED) { 
+							} else if (e.target.readyState === EventSource.CONNECTING) { 
+							}
+						});
+					}
+				}
+
+				this.stop = () => { 
+					if (source != null) { source.close(); }
+				}
+			}
+			let ees = new EES();
+			ees.start('/stream/push') 
+	</script>
+</body>
+</html>
