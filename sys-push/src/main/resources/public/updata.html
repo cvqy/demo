@@ -5,19 +5,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input id="name" value="" placeholder="用户名">
-<input id="title" value="" placeholder="标题">
-<button onclick="sub()">提交</button>
+<input id="status" value="" placeholder="status">
+<button onclick="sub()">submit</button>
 <script src="aja.min.js"></script>
 <script type="text/javascript">
 
 		let sub = () => {
-				let name = document.getElementById("name").value;
-				let title = document.getElementById("title").value;
+				let status = document.getElementById("status").value;
 				let _json={
 					id:1,
-					name:name,
-					title:title
+					status: status,
 				}
 				console.log(_json)
 				aja().url("/update/title")

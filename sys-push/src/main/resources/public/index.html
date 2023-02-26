@@ -6,7 +6,7 @@
 </head>
 <body>
 	 
-	<h1 id="title">吾家有女初长成,力拔山兮气盖世</h1> 
+	<h1 id="title">test</h1>
 	<script type="text/javascript"> 
 			function EES() {
 				let source = null;
@@ -21,7 +21,7 @@
 						source.addEventListener('message', e => {
 							console.log("message", JSON.parse(e.data));
 							if(JSON.parse(e.data).msg != null){
-								 document.getElementById("title").innerHTML = e.data ; 
+								 document.getElementById("title").innerHTML = JSON.parse(e.data).msg.status;
 							}
 							
 						});
